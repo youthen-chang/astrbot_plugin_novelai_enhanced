@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>NovelAI 预设管理</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<main>
+<header><div><h1>NovelAI 预设管理</h1><p>修改版作者 Yasumi · 随包预设来自原插件作者 luoxiQAQ</p></div><button id="refresh">刷新</button></header>
+<p id="status" role="status">正在连接 AstrBot…</p>
+<nav><button id="characters" class="active">人物</button><button id="styles">风格</button><input id="search" placeholder="搜索名称或英文提示词" aria-label="搜索预设"><button id="add">添加预设</button><button id="export">导出全部</button><label class="button">合并导入<input id="import" type="file" accept=".json,application/json" hidden></label></nav>
+<p id="count"></p><div id="list"></div><footer><button id="prev">上一页</button><span id="page"></span><button id="next">下一页</button></footer>
+<dialog id="editor"><form id="form"><h2>编辑预设</h2><label>分类<select id="kind"><option value="characters">人物</option><option value="styles">风格</option></select></label><label>名称<input id="name" required maxlength="40"></label><label>提示词<textarea id="prompt" required maxlength="4000" rows="10"></textarea></label><p>修改名称会新增一条预设；原预设可在列表中删除。</p><div class="actions"><button id="cancel" type="button">取消</button><button type="submit">保存</button></div></form></dialog>
+</main><script type="module" src="app.js"></script>
+</body></html>

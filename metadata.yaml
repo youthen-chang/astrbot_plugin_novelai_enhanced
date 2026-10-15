@@ -1,0 +1,9 @@
+name: astrbot_plugin_novelai_enhanced
+display_name: NovelAI 绘图增强版
+desc: NovelAI 文生图、图生图、每日额度、白名单、排队重试、人物与风格预设、画廊自动归档。
+version: v1.0.0
+author: Yasumi
+repo: https://github.com/youthen-chang/astrbot_plugin_novelai_enhanced
+astrbot_version: ">=4.28.2"
+support_platforms:
+  - aiocqhttp

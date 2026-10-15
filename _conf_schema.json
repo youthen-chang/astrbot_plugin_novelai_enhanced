@@ -1,0 +1,250 @@
+{
+  "API_TOKEN": {
+    "description": "NovelAI API Token",
+    "type": "string",
+    "default": "",
+    "hint": "NovelAI API Token，支持多个用逗号分隔，自动轮切。",
+    "secret": true
+  },
+  "API_PROXY": {
+    "description": "API 反代地址",
+    "type": "string",
+    "default": "",
+    "hint": "NovelAI API 反向代理地址（替换 https://image.novelai.net），留空使用官方地址。"
+  },
+  "HTTP_PROXY": {
+    "description": "HTTP 代理",
+    "type": "string",
+    "default": "",
+    "hint": "HTTP/SOCKS5 代理地址，留空不使用代理。"
+  },
+  "DEFAULT_MODEL": {
+    "description": "模型",
+    "type": "string",
+    "default": "nai-diffusion-4-5-full",
+    "hint": "默认使用的 NovelAI 模型。",
+    "options": [
+      "nai-diffusion-5-full",
+      "nai-diffusion-5-curated",
+      "nai-diffusion-4-5-full",
+      "nai-diffusion-4-5-curated"
+    ]
+  },
+  "DEFAULT_RESOLUTION": {
+    "description": "分辨率",
+    "type": "string",
+    "default": "832x1216",
+    "hint": "默认图片分辨率。",
+    "options": [
+      "832x1216",
+      "1216x832",
+      "1024x1024"
+    ]
+  },
+  "DEFAULT_STEPS": {
+    "description": "步数 (1-50)",
+    "type": "int",
+    "default": 28,
+    "hint": "默认采样步数。"
+  },
+  "DEFAULT_SCALE": {
+    "description": "权重 (1-20)",
+    "type": "int",
+    "default": 7,
+    "hint": "默认 CFG Scale 引导权重。"
+  },
+  "CFG_RESCALE": {
+    "description": "引导缩放参数(0.0-1.0)",
+    "type": "float",
+    "default": 0.0,
+    "hint": "CFG Rescale 参数。"
+  },
+  "DEFAULT_SAMPLER": {
+    "description": "默认采样器",
+    "type": "string",
+    "default": "k_euler",
+    "hint": "默认采样器名称。"
+  },
+  "NEGATIVE_PROMPT": {
+    "description": "负面提示词",
+    "type": "text",
+    "default": "",
+    "hint": "全局负面提示词，留空使用默认。单次画图可在描述中使用 -n:额外负面词。 追加，不覆盖默认值。"
+  },
+  "IMG2IMG_STRENGTH": {
+    "description": "图生图强度",
+    "type": "float",
+    "default": 0.5,
+    "hint": "图生图强度 (0.1-0.9)。"
+  },
+  "IMG2IMG_NOISE": {
+    "description": "图生图噪声",
+    "type": "float",
+    "default": 0.2,
+    "hint": "图生图噪声 (0.0-1.0)。"
+  },
+  "CHAR_SWAP_STRENGTH": {
+    "description": "来点-图生图强度",
+    "type": "float",
+    "default": 0.65,
+    "hint": "来点换人物时的图生图强度 (0.1-0.9)，越大越偏离原图。"
+  },
+  "CHAR_SWAP_NOISE": {
+    "description": "来点-图生图噪声",
+    "type": "float",
+    "default": 0.2,
+    "hint": "来点换人物时的图生图噪声 (0.0-1.0)。"
+  },
+  "ONLY_INSTANCE_ID": {
+    "description": "仅限实例标识",
+    "type": "string",
+    "default": "",
+    "hint": "留空 = 不限制。填写后只响应来自该实例的消息（多个账号共用同一个 AstrBot 部署时，实例标识一般是该账号的 QQ 号），其余实例静默。"
+  },
+  "ENABLE_R18": {
+    "description": "R18 画图开关",
+    "type": "bool",
+    "default": false,
+    "hint": "开启后允许生成 R18 内容。关闭时自动在负面提示词中添加 NSFW 过滤标签。"
+  },
+  "TRANSLATE_PROVIDER_ID": {
+    "description": "翻译大模型",
+    "type": "string",
+    "default": "",
+    "hint": "选择 AstrBot 已配置的聊天模型提供商，用于中文提示词翻译。留空不翻译。",
+    "_special": "select_provider"
+  },
+  "TRANSLATE_MODEL_NAME": {
+    "description": "翻译模型名",
+    "type": "string",
+    "default": "",
+    "hint": "覆盖翻译提供商的模型名；留空使用该提供商默认模型。"
+  },
+  "GALLERY_UPLOAD_URL": {
+    "description": "图库上传地址",
+    "type": "string",
+    "default": "",
+    "hint": "画完图自动上传到图库网站的接口地址。留空或未填密钥则不启用。"
+  },
+  "GALLERY_UPLOAD_KEY": {
+    "description": "图库上传密钥",
+    "type": "string",
+    "default": "",
+    "hint": "你的图库网站上传密钥；不同机器自行配置。",
+    "secret": true
+  },
+  "DRAW_BLACKLIST": {
+    "description": "画图黑名单",
+    "type": "text",
+    "default": "",
+    "hint": "每行一个 QQ 号或群号，命中的人/群无法使用画图、重画和 AI 画图工具。行内 # 之后为注释，号码后可跟备注。可用 QQ 指令「拉黑/解除拉黑/黑名单」管理。"
+  },
+  "PLUGIN_ADMINS": {
+    "description": "插件管理员",
+    "type": "text",
+    "default": "",
+    "hint": "每行一个平台用户号。这些用户在任何群聊和私聊都豁免全部每日额度，也不占总额度；即使会话额度设为 1 仍可继续画。仍受白名单、黑名单和排队约束。与 AstrBot 管理员无关。"
+  },
+  "GROUP_WHITELIST_ENABLED": {
+    "description": "启用群聊白名单",
+    "type": "bool",
+    "default": false,
+    "hint": "开启后仅名单内群可画；空名单表示全部禁止。群内成员共用额度，黑名单用户除外。"
+  },
+  "GROUP_WHITELIST": {
+    "description": "群聊白名单",
+    "type": "text",
+    "default": "",
+    "hint": "每行一个群号，可跟备注；也可填完整 会话键。"
+  },
+  "PRIVATE_WHITELIST_ENABLED": {
+    "description": "启用私聊白名单",
+    "type": "bool",
+    "default": false,
+    "hint": "开启后仅名单内用户可私聊生图；空名单表示全部禁止。"
+  },
+  "PRIVATE_WHITELIST": {
+    "description": "私聊白名单",
+    "type": "text",
+    "default": "",
+    "hint": "每行一个平台用户号，可跟备注；也可填完整 会话键。"
+  },
+  "DAILY_QUOTA_ENABLED": {
+    "description": "启用每日生图限额",
+    "type": "bool",
+    "default": false,
+    "hint": "群聊与私聊共用每日总额度；北京时间零点重置，成功保存一张扣一次。"
+  },
+  "DAILY_TOTAL_LIMIT": {
+    "description": "每日总额度",
+    "type": "int",
+    "default": 100,
+    "hint": "所有群聊、私聊共享。0=禁止普通用户生图，-1=不限；插件管理员不计入。"
+  },
+  "GROUP_DAILY_LIMIT": {
+    "description": "群聊默认每日额度",
+    "type": "int",
+    "default": 20,
+    "hint": "每个群共享的默认额度；0=禁止，-1=不限。"
+  },
+  "PRIVATE_DAILY_LIMIT": {
+    "description": "私聊默认每日额度",
+    "type": "int",
+    "default": 5,
+    "hint": "每个私聊会话默认额度；0=禁止，-1=不限。"
+  },
+  "GROUP_DAILY_OVERRIDES": {
+    "description": "指定群聊每日额度",
+    "type": "text",
+    "default": "",
+    "hint": "每行：群号=额度，例如 123456=50。也可使用完整 会话键；未列出使用默认值。"
+  },
+  "PRIVATE_DAILY_OVERRIDES": {
+    "description": "指定私聊每日额度",
+    "type": "text",
+    "default": "",
+    "hint": "每行：用户号=额度，例如 123456=10。也可使用完整 会话键；未列出使用默认值。"
+  },
+  "DRAW_TRIGGER": {
+    "description": "画图触发词",
+    "type": "string",
+    "default": "/画图",
+    "hint": "消息开头匹配，可直接接描述。支持带 / 或不带 /；保存后生效。"
+  },
+  "REDRAW_TRIGGER": {
+    "description": "重画触发词",
+    "type": "string",
+    "default": "/重画",
+    "hint": "仅改变重画触发词，不改变原会话重画逻辑。以 / 开头可注册斜杠指令；保存后生效。"
+  },
+  "KEEP_LEGACY_DRAW_COMMANDS": {
+    "description": "保留原画图和重画指令",
+    "type": "bool",
+    "default": false,
+    "hint": "关闭时 /nai、/画图、/novelai、/重画、/redraw 不触发此插件；其他指令保持不变。保存后生效。"
+  },
+  "GENERATING_TEXT": {
+    "description": "生成中的回复文本",
+    "type": "text",
+    "default": "🎨 正在绘制中，请稍候...",
+    "hint": "有效任务入队后立即回复，只发一次，不展示排队和重试；留空不发送。"
+  },
+  "GENERATION_QUEUE_LIMIT": {
+    "description": "最多未完成生图任务",
+    "type": "int",
+    "default": 20,
+    "hint": "包含正在执行的任务。每人同时最多一个未完成任务，管理员也参与排队。"
+  },
+  "RATE_LIMIT_RETRIES": {
+    "description": "429 后台重试次数",
+    "type": "int",
+    "default": 3,
+    "hint": "首次请求之外最多重试次数；最终失败才回复用户，429 不切换 Token。"
+  },
+  "RATE_LIMIT_WAIT": {
+    "description": "429 重试等待秒数",
+    "type": "int",
+    "default": 15,
+    "hint": "每次重试等待时间；服务返回更长 Retry-After 时遵循它，最长 600 秒。"
+  }
+}
